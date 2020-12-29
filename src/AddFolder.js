@@ -1,6 +1,6 @@
 import React from 'react'
 import NotefulContext from './NotefulContext'
-import API_ENDPOINT from './config'
+import config from './config'
 
 
 export default class AddFolder extends React.Component {
@@ -25,8 +25,8 @@ export default class AddFolder extends React.Component {
         }
         
         this.setState({ error: null })
-        console.log(process.env.API_ENDPOINT)
-        fetch(`${API_ENDPOINT}/folders`, {
+        (process.env.API_ENDPOINT)
+        fetch(`${config.API_ENDPOINT}/folders`, {
           method: 'POST',
           body: JSON.stringify(folder),
           headers: {
@@ -44,7 +44,7 @@ export default class AddFolder extends React.Component {
             return res.json()
           })
           .then(data => {
-            console.log(data)
+            
             e.target['folder-name'].value = ''
             this.props.history.push('/')
 
@@ -58,7 +58,7 @@ export default class AddFolder extends React.Component {
             this.setState({ error: error.message })
             
             
-            console.log(error)
+            (error)
           })
       }
     render(){

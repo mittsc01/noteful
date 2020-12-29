@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import NotefulContext from './NotefulContext'
 import PropTypes from 'prop-types'
-import API_ENDPOINT from './config'
+import config from './config'
 
 function deleteNoteRequest(noteId,cb, history){
-    fetch(`${API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': `application/json`

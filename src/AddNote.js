@@ -1,7 +1,7 @@
 import React from 'react';
 import NotefulContext from './NotefulContext';
 import ValidationError from './ValidationError'
-import API_ENDPOINT from './config'
+import config from './config'
 
 export default class AddNote extends React.Component {
     
@@ -70,7 +70,7 @@ export default class AddNote extends React.Component {
         } 
           
           
-          fetch(`${API_ENDPOINT}/notes`, {
+          fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             body: JSON.stringify(note),
             headers: {
@@ -88,7 +88,7 @@ export default class AddNote extends React.Component {
               return res.json()
             })
             .then(data => {
-              console.log(data)
+              
               e.target['note-name'].value = ''
               e.target['note-content'].value = ''
               e.target['folder-select'].value = ''
@@ -104,7 +104,7 @@ export default class AddNote extends React.Component {
         }
     
     render(){
-        console.log(this.context.folders)
+        
         return (
             <form className="add-note" onSubmit={this.handleSubmit}>
                 <h2>Create a note</h2>

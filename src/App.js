@@ -11,7 +11,7 @@ import AddFolder from './AddFolder'
 import AddNote from './AddNote'
 import NavError from './NavError'
 import MainError from './MainError'
-import API_ENDPOINT from './config'
+import config from './config'
 
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
 
   componentDidMount(){
     this.getData()
-    console.log(process.env)
+    
   }
 
   
@@ -42,8 +42,8 @@ class App extends React.Component {
   }
 
   getData = () => { 
-    const urlFolders = API_ENDPOINT+'/folders'
-    const urlNotes = API_ENPOINT+'/notes'
+    const urlFolders = config.API_ENDPOINT+'/folders'
+    const urlNotes = config.API_ENDPOINT+'/notes'
     Promise.all([
       fetch(urlFolders),
       fetch(urlNotes)
@@ -55,7 +55,7 @@ class App extends React.Component {
       }));
     })
     .then(data=>{
-      console.log(this)
+      
       this.setState({
         folders: data[0],
         notes: data[1]

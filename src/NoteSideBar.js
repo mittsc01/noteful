@@ -10,11 +10,11 @@ export default function NoteSideBar(props){
             {context=>{
                 const note = context.notes.find(note=>note.id===props.match.params.noteId) || {}
                 
-                const currentFolder= context.folders.find(folder=>folder.id===note.folderId) || {}
+                const currentFolder= context.folders.find(folder=>folder.id===note.folder_id) || {}
                 return(
                     <nav className='note-sidebar'>
                         <Link to={'/folder/'+currentFolder.id}>
-                            <h2>{currentFolder.name}</h2>
+                            <h2>{currentFolder.folder_name}</h2>
                         </Link>
                         
                         

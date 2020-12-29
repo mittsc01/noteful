@@ -1,6 +1,7 @@
 import React from 'react';
 import NotefulContext from './NotefulContext';
 import ValidationError from './ValidationError'
+import {API_ENDPOINT} from './config'
 
 export default class AddNote extends React.Component {
     
@@ -62,14 +63,14 @@ export default class AddNote extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const note = {
-            name: this.state.name.value ,
+            note_name: this.state.name.value ,
             content:this.state.content.value,
-            folderId: this.state.folderId.value,
+            folder_id: this.state.folderId.value,
             modified: new Date()
         } 
           
           
-          fetch('http://localhost:9090/notes', {
+          fetch(`${API_ENDPOINT}/notes`, {
             method: 'POST',
             body: JSON.stringify(note),
             headers: {
@@ -116,7 +117,7 @@ export default class AddNote extends React.Component {
                 <select id="folder-select" name="folder-select" onChange={(e)=>this.updateFolderId(e.target.value)} >
                     {this.context.folders.map(folder=>{
                         return (
-                        <option key={folder.id} value={folder.id}>{folder.name}</option>
+                        <option key={folder.id} value={folder.id}>{folder.folder_name}</option>
                         )
                     })}
                 </select>

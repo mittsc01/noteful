@@ -11,7 +11,7 @@ export default function SideBar(props){
                 const folders = context.folders.map(folder => {
                     return (
                         <Link to={'/folder/'+folder.id} key={folder.id+'-folder'}>
-                            <h3 id={folder.id}>{folder.name}</h3>
+                            <h3 id={folder.id}>{folder.folder_name}</h3>
                         </Link>
                     )
                 });

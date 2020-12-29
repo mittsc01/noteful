@@ -9,8 +9,9 @@ export default function NoteList(props){
         
             <NotefulContext.Consumer>
                 {(context)=>{
+                    console.log(context,props.match.params.folderId)
                     //filter notes by folder if folder is selected
-                    const folderNotes = context.notes.filter(note=>note.folderId===props.match.params.folderId || !props.match.params.folderId);
+                    const folderNotes = context.notes.filter(note=>note.folder_id==props.match.params.folderId || !props.match.params.folderId);
                     const notes = folderNotes.map((note,i)=>(
                     <div key={i}>
                         <Note note={note} />

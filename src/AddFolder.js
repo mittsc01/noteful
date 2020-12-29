@@ -1,6 +1,7 @@
 import React from 'react'
 import NotefulContext from './NotefulContext'
 
+
 export default class AddFolder extends React.Component {
     static contextType = NotefulContext
     
@@ -19,11 +20,12 @@ export default class AddFolder extends React.Component {
         // get the form fields from the event
         
         const folder = {
-          name: e.target['folder-name'].value
+          folder_name: e.target['folder-name'].value
         }
         
         this.setState({ error: null })
-        fetch('http://localhost:9090/folders', {
+        console.log(process.env.API_ENDPOINT)
+        fetch('http://localhost:8000/api/folders', {
           method: 'POST',
           body: JSON.stringify(folder),
           headers: {

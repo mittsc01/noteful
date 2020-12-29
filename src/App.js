@@ -11,6 +11,7 @@ import AddFolder from './AddFolder'
 import AddNote from './AddNote'
 import NavError from './NavError'
 import MainError from './MainError'
+import API_ENDPOINT from './config'
 
 
 class App extends React.Component {
@@ -25,12 +26,13 @@ class App extends React.Component {
 
   componentDidMount(){
     this.getData()
+    console.log(process.env)
   }
 
   
 
   deleteNote = noteId => {
-    const newNotes = this.state.notes.filter(note=>note.id!==noteId)
+    const newNotes = this.state.notes.filter(note=>note.id!=noteId)
     this.setState({notes:newNotes})
   }
 
@@ -40,8 +42,8 @@ class App extends React.Component {
   }
 
   getData = () => { 
-    const urlFolders = 'http://localhost:9090/folders'
-    const urlNotes = 'http://localhost:9090/notes'
+    const urlFolders = API_ENDPOINT+'/folders'
+    const urlNotes = API_ENPOINT+'/notes'
     Promise.all([
       fetch(urlFolders),
       fetch(urlNotes)
@@ -53,6 +55,7 @@ class App extends React.Component {
       }));
     })
     .then(data=>{
+      console.log(this)
       this.setState({
         folders: data[0],
         notes: data[1]

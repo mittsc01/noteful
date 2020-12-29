@@ -7,7 +7,7 @@ export default function NoteMain(props){
     return (
         <NotefulContext.Consumer>
             {context=>{
-                const note = context.notes.find(note => note.id===props.match.params.noteId) || {}    
+                const note = context.notes.find(note => note.id==props.match.params.noteId) || {}    
                 return (
                     <div className="note-main">
                         <Note note={note} history={props.history} />

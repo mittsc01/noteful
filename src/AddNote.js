@@ -1,7 +1,7 @@
 import React from 'react';
 import NotefulContext from './NotefulContext';
 import ValidationError from './ValidationError'
-import {API_ENDPOINT} from './config'
+import API_ENDPOINT from './config'
 
 export default class AddNote extends React.Component {
     

@@ -19,7 +19,7 @@ export default class AddNote extends React.Component {
                 touched: false
             },
             folderId: {
-                value: "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
+                value: 1,
                 touched: false
             },
             error: ''
